@@ -6,7 +6,7 @@ public class Factorial {
         System.out.println(result);
     }
 
-    public static int interativeFactorial(int num) {
+    public static int interactiveFactorial(int num) {
         if (num == 0) {
             return 1;
         }
