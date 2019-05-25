@@ -4,6 +4,7 @@ import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Disabled;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
+import org.junit.jupiter.api.condition.*;
 
 import static org.junit.jupiter.api.Assertions.*;
 
@@ -15,12 +16,15 @@ class FactorialTest {
 
     }
 
-    @Disabled
+//    @Disabled
     @Test
+    @EnabledIfEnvironmentVariable(named = "USER", matches = "shinshin")
+    @EnabledOnJre(JRE.JAVA_8)
     void interactiveFactorial() {
     }
 
     @DisplayName("recursive")
+    @EnabledOnOs(OS.WINDOWS)
     @Test
     void recursiveFactorial() {
         assertAll("Test Recursive",
@@ -29,7 +33,7 @@ class FactorialTest {
                         () -> assertFalse(false)
                         ),
                 () -> assertAll("test2",
-                        () -> assertEquals(true, true, "test"),
+                        () -> assertEquals("a", "a", "test"),
                         () -> assertNotEquals(false, true, "failed")
                 )
         );
